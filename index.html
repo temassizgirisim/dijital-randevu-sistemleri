@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temassız Randevu Sistemi | Temassız Girişim</title>
+    <title>Liva Güzellik & Tırnak | Temassız Randevu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -47,266 +47,127 @@
         }
     </style>
 </head>
-<body class="bg-darkBg text-zinc-100 min-h-screen flex flex-col selection:bg-gold-600 selection:text-black">
+<body class="bg-darkBg text-zinc-100 min-h-screen flex flex-col justify-between selection:bg-gold-600 selection:text-black">
 
-    <!-- Navbar -->
-    <header class="border-b border-borderGold bg-darkBg/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-gold-700 via-gold-500 to-gold-300 flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-gold-500/10">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-                <div>
-                    <span class="text-xl font-bold tracking-wider gold-gradient-text">TEMASSIZ RANDEVU</span>
-                    <span class="block text-[10px] tracking-widest text-gold-500 uppercase font-semibold">Temassız Girişim Ürünüdür</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="#urunler" class="hidden sm:inline-flex items-center text-xs font-semibold text-zinc-400 hover:text-gold-400 transition-colors">
-                    Ürün Ailemiz
-                </a>
-                <a href="#fiyatlar" class="px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-gold-600 to-gold-400 text-black hover:opacity-90 shadow-lg shadow-gold-500/20 transition-all duration-300">
-                    Hemen Başla
-                </a>
-            </div>
+    <!-- Header / İşletme Bilgisi -->
+    <header class="w-full max-w-md mx-auto pt-8 px-4 text-center">
+        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-gold-700 via-gold-500 to-gold-300 mx-auto flex items-center justify-center text-black font-extrabold text-2xl shadow-xl shadow-gold-500/20 mb-4 border border-gold/40">
+            LG
         </div>
+        <h1 class="text-2xl font-extrabold text-zinc-100 tracking-wide">Liva Güzellik & Tırnak</h1>
+        <p class="text-xs text-gold-400 mt-1 flex items-center justify-center">
+            <i class="fa-solid fa-location-dot mr-1"></i> Kadıköy, İstanbul
+        </p>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden py-20 lg:py-32">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05)_0,transparent_70%)]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-gold/30 text-gold-400 text-xs font-medium mb-6">
-                <i class="fa-solid fa-star text-gold-500"></i>
-                <span>Kuaför, Güzellik, Tırnak ve Cilt Bakım Merkezleri İçin</span>
-            </div>
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-8">
-                Sen bakım yaparken randevular <span class="gold-gradient-text">kendiliğinden dolsun.</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10">
-                Temassız Girişim güvencesiyle geliştirilen <strong class="text-zinc-200">Temassız Randevu Sistemi</strong> sayesinde müşterin Instagram linkine dokunur, boş saati kendisi seçer. Sen telefona bakmadan takviminde görürsün.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#fiyatlar" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black hover:opacity-95 shadow-xl shadow-gold-500/20 transition-all">
-                    Paket Seç & Başla
-                </a>
-                <a href="#demo" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold bg-zinc-900 border border-gold/40 text-gold-400 hover:bg-zinc-800 transition-all">
-                    Canlı Örnek İncele
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ecosystem / Product Family Section -->
-    <section id="urunler" class="py-16 bg-cardBg border-y border-borderGold">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-gold-500 font-semibold text-xs tracking-widest uppercase">Temassız Girişim Ekosistemi</span>
-                <h2 class="text-2xl sm:text-3xl font-bold mt-2">İşletmenizi Dijitalleştiren Çözümlerimiz</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-darkBg border border-gold/20 rounded-2xl p-6 text-center">
-                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold/30 flex items-center justify-center text-gold-400 mx-auto mb-4 text-lg">
-                        <i class="fa-solid fa-utensils"></i>
-                    </div>
-                    <h3 class="font-bold text-zinc-100 mb-2">1. Dijital Menü</h3>
-                    <p class="text-xs text-zinc-400">Restoran ve kafeler için karekodlu, temassız ve hızlı menü çözümleri.</p>
-                </div>
-                <div class="bg-darkBg border border-gold/20 rounded-2xl p-6 text-center">
-                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold/30 flex items-center justify-center text-gold-400 mx-auto mb-4 text-lg">
-                        <i class="fa-solid fa-address-card"></i>
-                    </div>
-                    <h3 class="font-bold text-zinc-100 mb-2">2. Dijital Kartvizit</h3>
-                    <p class="text-xs text-zinc-400">NFC akıllı kartlar ve sosyal medya yönlendirme sistemleri.</p>
-                </div>
-                <div class="bg-darkBg border-2 border-gold-500 rounded-2xl p-6 text-center relative shadow-lg shadow-gold-500/10">
-                    <div class="absolute -top-3 right-4 bg-gold-500 text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">Yeni Ürün</div>
-                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 border border-gold/50 flex items-center justify-center text-gold-300 mx-auto mb-4 text-lg">
-                        <i class="fa-solid fa-calendar-check"></i>
-                    </div>
-                    <h3 class="font-bold text-zinc-100 mb-2">3. Temassız Randevu</h3>
-                    <p class="text-xs text-zinc-400">Güzellik ve bakım salonları için 7/24 otomatik akıllı randevu sistemi.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Preview Interactive Card Section -->
-    <section id="demo" class="py-20 max-w-5xl mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-bold text-zinc-100">Müşterinin Gördüğü Ekran (Örnek Test Alanı)</h2>
-            <p class="text-sm text-zinc-400 mt-2">Instagram profilindeki linke tıklandığında müşterinin karşılaştığı şık ve hızlı arayüz:</p>
-        </div>
-        
-        <div class="max-w-md mx-auto bg-cardBg border border-gold/30 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+    <!-- Ana Randevu Kartı -->
+    <main class="w-full max-w-md mx-auto p-4 my-6">
+        <div class="bg-cardBg border border-gold/30 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl"></div>
-            
-            <div class="flex items-center space-x-4 mb-6">
-                <div class="w-14 h-14 rounded-2xl bg-gold-500/20 border border-gold/50 flex items-center justify-center text-gold-400 font-bold text-xl">
-                    LV
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold text-zinc-100">Liva Güzellik & Tırnak</h3>
-                    <p class="text-xs text-zinc-400"><i class="fa-solid fa-location-dot text-gold-500 mr-1"></i> Kadıköy, İstanbul</p>
-                </div>
-            </div>
 
-            <div class="space-y-4">
+            <h2 class="text-sm font-bold text-zinc-300 uppercase tracking-wider mb-4 border-b border-borderGold pb-2">
+                <i class="fa-solid fa-calendar-days text-gold-500 mr-2"></i>Randevu Oluştur
+            </h2>
+
+            <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-4">
+                <!-- Hizmet Seçimi -->
                 <div>
                     <label class="block text-xs font-semibold text-gold-400 mb-1 uppercase tracking-wider">Hizmet Seçin</label>
-                    <select class="w-full bg-zinc-900 border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
-                        <option>Jel Tırnak Uygulaması (60 dk) - 850 TL</option>
-                        <option>Cilt Bakımı & Hydrafacial (45 dk) - 1.200 TL</option>
-                        <option>İpek Kirpik (75 dk) - 950 TL</option>
+                    <select id="serviceSelect" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                        <option value="Jel Tırnak Uygulaması (850 TL)">Jel Tırnak Uygulaması (60 dk) — 850 TL</option>
+                        <option value="Cilt Bakımı & Hydrafacial (1.200 TL)">Cilt Bakımı & Hydrafacial (45 dk) — 1.200 TL</option>
+                        <option value="İpek Kirpik (950 TL)">İpek Kirpik (75 dk) — 950 TL</option>
+                        <option value="Manikür & Pedikür (500 TL)">Manikür & Pedikür (45 dk) — 500 TL</option>
                     </select>
                 </div>
 
+                <!-- Gün ve Saat -->
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-semibold text-gold-400 mb-1 uppercase tracking-wider">Gün</label>
-                        <select class="w-full bg-zinc-900 border border-gold/30 rounded-xl px-3 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                        <select id="daySelect" class="w-full bg-darkBg border border-gold/30 rounded-xl px-3 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
                             <option>Bugün</option>
                             <option>Yarın</option>
                             <option>Cumartesi</option>
+                            <option>Pazar</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gold-400 mb-1 uppercase tracking-wider">Saat</label>
-                        <select class="w-full bg-zinc-900 border border-gold/30 rounded-xl px-3 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                        <select id="timeSelect" class="w-full bg-darkBg border border-gold/30 rounded-xl px-3 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                            <option>10:00</option>
+                            <option>11:30</option>
                             <option>13:30</option>
                             <option>15:00</option>
-                            <option>17:15</option>
+                            <option>16:30</option>
+                            <option>18:00</option>
                         </select>
                     </div>
                 </div>
 
-                <button onclick="alert('Harika! Randevu başarıyla simüle edildi. İşletme sahibinin telefonuna bildirim düştü.')" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-bold text-sm tracking-wide uppercase hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all mt-4">
+                <!-- Müşteri Bilgileri -->
+                <div>
+                    <label class="block text-xs font-semibold text-gold-400 mb-1 uppercase tracking-wider">Adınız Soyadınız</label>
+                    <input type="text" id="clientName" required placeholder="Örn: Zilan Üstündağ" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gold-400 mb-1 uppercase tracking-wider">Telefon Numaranız</label>
+                    <input type="tel" id="clientPhone" required placeholder="05XX XXX XX XX" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                </div>
+
+                <!-- Onay Butonu -->
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-extrabold text-sm tracking-wide uppercase hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all mt-2">
                     Randevuyu Onayla
                 </button>
-            </div>
+            </form>
         </div>
-    </section>
+    </main>
 
-    <!-- Pricing / Plans -->
-    <section id="fiyatlar" class="py-20 bg-cardBg border-t border-borderGold max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="text-gold-500 font-semibold text-xs tracking-widest uppercase">Şeffaf Fiyatlandırma</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">İşletmen İçin En Uygun Paketi Seç</h2>
+    <!-- Başarılı Randevu Modal (Gizli) -->
+    <div id="successModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-gold/40 rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-gold-500/20 border border-gold/50 flex items-center justify-center text-gold-400 text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-zinc-100 mb-2">Randevunuz Alındı!</h3>
+            <p class="text-xs text-zinc-400 mb-6 leading-relaxed">
+                Seçtiğiniz saat rezerve edildi. İşletme sahibi randevunuzu onaylamak için sizinle iletişime geçecektir.
+            </p>
+            <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-gold-500 text-black font-bold hover:bg-gold-400 transition-all text-sm">
+                Tamam
+            </button>
         </div>
+    </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <!-- Standard -->
-            <div class="bg-darkBg border border-gold/30 rounded-3xl p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-bold text-zinc-100">Standart</h3>
-                        <span class="px-3 py-1 rounded-full text-xs bg-gold-500/10 text-gold-400 border border-gold/30">Bireysel & Tek Uzman</span>
-                    </div>
-                    <p class="text-zinc-400 text-sm mb-6">Tek başına çalışan uzmanlar ve butik salonlar için ideal.</p>
-                    <div class="text-3xl font-extrabold text-gold-400 mb-6">1.499 TL <span class="text-xs text-zinc-500 font-normal">/ ay</span></div>
-                    <ul class="space-y-3 text-sm text-zinc-300 mb-8">
-                        <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> 2 uzmana kadar destek</li>
-                        <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Kişiye özel randevu linki</li>
-                        <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Çakışma önleyici akıllı takvim</li>
-                        <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Müşteri veritabanı ve ciro takibi</li>
-                    </ul>
-                </div>
-                <button onclick="openIbanModal('Standart Paket (1.499 TL/ay)')" class="w-full py-3.5 rounded-xl border border-gold/50 text-gold-400 font-bold text-center hover:bg-gold-500 hover:text-black transition-all">
-                    Standart Planı Seç & Öde
-                </button>
-            </div>
-
-            <!-- Pro -->
-            <div class="bg-gradient-to-b from-zinc-900 to-darkBg border-2 border-gold-500 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-gold-500/10">
-                <div class="absolute -top-3 right-8 bg-gradient-to-r from-gold-600 to-gold-400 text-black text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
-                    En Popüler
-                </div>
-                <div>
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-bold text-zinc-100">Pro Salon</h3>
-                        <span class="px-3 py-1 rounded-full text-xs bg-gold-500/20 text-gold-300 border border-gold/50">Ekip & Salonlar</span>
-                    </div>
-                    <p class="text-zinc-400 text-sm mb-6">Birden fazla personeli olan güzellik ve bakım merkezleri için.</p>
-                    <div class="text-3xl font-extrabold text-gold-400 mb-6">1.999 TL <span class="text-xs text-zinc-500 font-normal">/ ay</span></div>
-                    <ul class="space-y-3 text-sm text-zinc-300 mb-8">
-                        <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Sınırsız uzman / koltuk</li>
-                        <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Logonla kişiselleştirilmiş sayfa</li>
-                        <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Uzun süredir gelmeyene SMS hatırlatma</li>
-                        <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Gelişmiş ciro ve performans raporları</li>
-                    </ul>
-                </div>
-                <button onclick="openIbanModal('Pro Salon Paketi (1.999 TL/ay)')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-bold text-center hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all">
-                    Pro Planı Seç & Öde
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-borderGold py-12 bg-darkBg text-center text-xs text-zinc-500">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-2">
-                <span class="text-gold-500 font-bold">Temassız Randevu</span>
-                <span>© 2026 Tüm Hakları Saklıdır. Temassız Girişim Markasıdır.</span>
-            </div>
-            <div class="flex space-x-6 text-zinc-400">
-                <a href="#" class="hover:text-gold-400">Gizlilik Politikası</a>
-                <a href="#" class="hover:text-gold-400">KVKK Aydınlatma</a>
-                <a href="#" class="hover:text-gold-400">İletişim</a>
-            </div>
-        </div>
+    <!-- Footer / Marka İmzası -->
+    <footer class="w-full py-6 text-center text-[11px] text-zinc-500 border-t border-borderGold">
+        <p>Altyapı <span class="text-gold-500 font-bold">Temassız Randevu</span> ile hazırlanmıştır.</p>
+        <p class="text-zinc-600 mt-0.5">Bir <strong class="text-zinc-400">Temassız Girişim</strong> Ürünüdür.</p>
     </footer>
 
-    <!-- IBAN Payment Modal (Direct Checkout) -->
-    <div id="ibanModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-cardBg border border-gold/40 rounded-3xl max-w-lg w-full p-6 relative shadow-2xl">
-            <button onclick="closeIbanModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-gold-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
+    <script>
+        function handleBooking(event) {
+            event.preventDefault();
             
-            <div class="flex items-center space-x-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-gold-500/20 border border-gold/40 flex items-center justify-center text-gold-400 font-bold">
-                    <i class="fa-solid fa-building-columns"></i>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold text-zinc-100">IBAN ile Ödeme ve Kurulum</h3>
-                    <p id="selectedPackageTitle" class="text-xs text-gold-400 font-medium">Seçilen Paket</p>
-                </div>
-            </div>
+            const service = document.getElementById('serviceSelect').value;
+            const day = document.getElementById('daySelect').value;
+            const time = document.getElementById('timeSelect').value;
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
 
-            <!-- Altyapı Notu -->
-            <div class="bg-zinc-900 border border-gold/30 rounded-2xl p-4 mb-5 text-xs text-zinc-300 space-y-2">
-                <div class="flex items-start space-x-2 text-gold-300 font-semibold">
-                    <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
-                    <span>Altyapı Güncelleme Bildirimi</span>
-                </div>
-                <p class="text-zinc-400 leading-relaxed">
-                    Ödeme altyapımızı yeniliyoruz. Şimdilik ödemeler doğrudan **IBAN** üzerinden alınmakta olup, dekont kontrolünün ardından 10 dakika içinde hesabınız aktif edilmektedir.
-                </p>
-            </div>
+            // İstersen burada randevu bilgilerini WhatsApp üzerinden dükkan sahibine iletmek için şu kodu açabilirsin:
+            // const msg = `Yeni Randevu Talebi!%0AAd: ${name}%0ATel: ${phone}%0AHizmet: ${service}%0AZaman: ${day} Saat ${time}`;
+            // window.open(`https://wa.me/905427474579?text=${msg}`, '_blank');
 
-            <!-- IBAN Detayları -->
-            <div class="space-y-3 mb-6 text-sm">
-                <div>
-                    <label class="block text-[11px] font-semibold text-zinc-400 uppercase tracking-wider mb-1">Alıcı Ünvanı</label>
-                    <div class="bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-zinc-200 font-medium flex justify-between items-center">
-                        <span>Temassız Girişim Medya Ltd. Şti.</span>
-                        <span class="text-xs text-gold-500">Doğrulanmış</span>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[11px] font-semibold text-zinc-400 uppercase tracking-wider mb-1">Banka & IBAN Numarası</label>
-                    <div class="bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-gold-400 font-mono font-bold flex justify-between items-center">
-                        <span id="ibanText">TR33 0006 2000 1199 0006 8832 51</span>
-                        <button onclick="copyIban()" class="text-xs bg-zinc-800 hover:bg-gold-500 hover:text-black text-gold-400 px-3 py-1 rounded-lg transition-all font-sans font-semibold">Kopyala</button>
-                    </div>
-                </div>
-            </div>
+            document.getElementById('successModal').classList.remove('hidden');
+        }
 
-            <!-- İşletme Bilgi Formu -->
-            <div class="space-y-3 border-t border-borderGold pt-4">
-                <h4 class="text-xs font-semibold text-zinc-300 uppercase tracking-wider">İşletme Bilgileriniz (Aktivasyon İçin)</h4>
-                <input type="text" placeholder="İşletme Adı (Örn: Liva Güzellik)" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none gold-border">
-                <input type="text" placeholder="Adınız Soyadınız" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none gold-border">
-                <input type="tel" placeholder="Cep Telefonu (05XX XXX XX XX)" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none gold-border">
-            </div>
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('bookingForm').reset();
+        }
+    </script>
+</body>
+</html>
 
-            <button onclic
