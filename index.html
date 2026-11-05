@@ -17,7 +17,7 @@
                             500: '#eab308',
                             600: '#ca8a04',
                             700: '#a16207',
-                            DEFAULT: '#D4AF37', // Klasik altın rengi
+                            DEFAULT: '#D4AF37',
                             light: '#F3E5AB',
                             dark: '#AA7C11'
                         },
@@ -88,7 +88,7 @@
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#fiyatlar" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black hover:opacity-95 shadow-xl shadow-gold-500/20 transition-all">
-                    Ücretsiz Hesap Aç
+                    Paket Seç & Başla
                 </a>
                 <a href="#demo" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold bg-zinc-900 border border-gold/40 text-gold-400 hover:bg-zinc-800 transition-all">
                     Canlı Örnek İncele
@@ -134,7 +134,7 @@
     <!-- Live Preview Interactive Card Section -->
     <section id="demo" class="py-20 max-w-5xl mx-auto px-4">
         <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-bold text-zinc-100">Müşterinin Gördüğü Ekran</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-zinc-100">Müşterinin Gördüğü Ekran (Örnek Test Alanı)</h2>
             <p class="text-sm text-zinc-400 mt-2">Instagram profilindeki linke tıklandığında müşterinin karşılaştığı şık ve hızlı arayüz:</p>
         </div>
         
@@ -180,41 +180,15 @@
                     </div>
                 </div>
 
-                <button onclick="alert('Demo sürüm! Kendi işletmeniz için hemen hesap oluşturabilirsiniz.')" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-bold text-sm tracking-wide uppercase hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all mt-4">
+                <button onclick="alert('Harika! Randevu başarıyla simüle edildi. İşletme sahibinin telefonuna bildirim düştü.')" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-bold text-sm tracking-wide uppercase hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all mt-4">
                     Randevuyu Onayla
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="py-20 bg-cardBg border-t border-borderGold max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="text-gold-500 font-semibold text-xs tracking-widest uppercase">Çok Pratik</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">Kurulum Bir Çay İçimi Sürer</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-darkBg border border-gold/20 rounded-2xl p-8 relative">
-                <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold/40 flex items-center justify-center text-gold-400 font-bold text-lg mb-6">1</div>
-                <h3 class="text-xl font-bold text-zinc-100 mb-3">Bilgilerini Gir</h3>
-                <p class="text-zinc-400 text-sm leading-relaxed">Sunduğun bakım hizmetlerini, sürelerini, fiyatlarını ve uzmanlarını panele ekle.</p>
-            </div>
-            <div class="bg-darkBg border border-gold/20 rounded-2xl p-8 relative">
-                <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold/40 flex items-center justify-center text-gold-400 font-bold text-lg mb-6">2</div>
-                <h3 class="text-xl font-bold text-zinc-100 mb-3">Linkini Paylaş</h3>
-                <p class="text-zinc-400 text-sm leading-relaxed">Sana özel oluşan randevu linkini Instagram profiline koy veya QR kodu masaya as.</p>
-            </div>
-            <div class="bg-darkBg border border-gold/20 rounded-2xl p-8 relative">
-                <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold/40 flex items-center justify-center text-gold-400 font-bold text-lg mb-6">3</div>
-                <h3 class="text-xl font-bold text-zinc-100 mb-3">Randevular Akmaya Başlasın</h3>
-                <p class="text-zinc-400 text-sm leading-relaxed">Müşterin saati seçer, randevu doğrudan takvimine ve telefonuna bildirim olarak düşer.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Pricing / Plans -->
-    <section id="fiyatlar" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="fiyatlar" class="py-20 bg-cardBg border-t border-borderGold max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <span class="text-gold-500 font-semibold text-xs tracking-widest uppercase">Şeffaf Fiyatlandırma</span>
             <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">İşletmen İçin En Uygun Paketi Seç</h2>
@@ -222,7 +196,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <!-- Standard -->
-            <div class="bg-cardBg border border-gold/30 rounded-3xl p-8 flex flex-col justify-between">
+            <div class="bg-darkBg border border-gold/30 rounded-3xl p-8 flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-bold text-zinc-100">Standart</h3>
@@ -237,9 +211,9 @@
                         <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Müşteri veritabanı ve ciro takibi</li>
                     </ul>
                 </div>
-                <a href="#" class="w-full py-3.5 rounded-xl border border-gold/50 text-gold-400 font-bold text-center hover:bg-gold-500 hover:text-black transition-all">
-                    Standart Planı Seç
-                </a>
+                <button onclick="openIbanModal('Standart Paket (1.499 TL/ay)')" class="w-full py-3.5 rounded-xl border border-gold/50 text-gold-400 font-bold text-center hover:bg-gold-500 hover:text-black transition-all">
+                    Standart Planı Seç & Öde
+                </button>
             </div>
 
             <!-- Pro -->
@@ -261,9 +235,9 @@
                         <li><i class="fa-solid fa-check text-gold-500 mr-2"></i> Gelişmiş ciro ve performans raporları</li>
                     </ul>
                 </div>
-                <a href="#" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-bold text-center hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all">
-                    Pro Planı Seç
-                </a>
+                <button onclick="openIbanModal('Pro Salon Paketi (1.999 TL/ay)')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-bold text-center hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all">
+                    Pro Planı Seç & Öde
+                </button>
             </div>
         </div>
     </section>
@@ -282,5 +256,57 @@
             </div>
         </div>
     </footer>
-</body>
-</html>
+
+    <!-- IBAN Payment Modal (Direct Checkout) -->
+    <div id="ibanModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-gold/40 rounded-3xl max-w-lg w-full p-6 relative shadow-2xl">
+            <button onclick="closeIbanModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-gold-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-gold-500/20 border border-gold/40 flex items-center justify-center text-gold-400 font-bold">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-zinc-100">IBAN ile Ödeme ve Kurulum</h3>
+                    <p id="selectedPackageTitle" class="text-xs text-gold-400 font-medium">Seçilen Paket</p>
+                </div>
+            </div>
+
+            <!-- Altyapı Notu -->
+            <div class="bg-zinc-900 border border-gold/30 rounded-2xl p-4 mb-5 text-xs text-zinc-300 space-y-2">
+                <div class="flex items-start space-x-2 text-gold-300 font-semibold">
+                    <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
+                    <span>Altyapı Güncelleme Bildirimi</span>
+                </div>
+                <p class="text-zinc-400 leading-relaxed">
+                    Ödeme altyapımızı yeniliyoruz. Şimdilik ödemeler doğrudan **IBAN** üzerinden alınmakta olup, dekont kontrolünün ardından 10 dakika içinde hesabınız aktif edilmektedir.
+                </p>
+            </div>
+
+            <!-- IBAN Detayları -->
+            <div class="space-y-3 mb-6 text-sm">
+                <div>
+                    <label class="block text-[11px] font-semibold text-zinc-400 uppercase tracking-wider mb-1">Alıcı Ünvanı</label>
+                    <div class="bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-zinc-200 font-medium flex justify-between items-center">
+                        <span>Temassız Girişim Medya Ltd. Şti.</span>
+                        <span class="text-xs text-gold-500">Doğrulanmış</span>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold text-zinc-400 uppercase tracking-wider mb-1">Banka & IBAN Numarası</label>
+                    <div class="bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-gold-400 font-mono font-bold flex justify-between items-center">
+                        <span id="ibanText">TR33 0006 2000 1199 0006 8832 51</span>
+                        <button onclick="copyIban()" class="text-xs bg-zinc-800 hover:bg-gold-500 hover:text-black text-gold-400 px-3 py-1 rounded-lg transition-all font-sans font-semibold">Kopyala</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İşletme Bilgi Formu -->
+            <div class="space-y-3 border-t border-borderGold pt-4">
+                <h4 class="text-xs font-semibold text-zinc-300 uppercase tracking-wider">İşletme Bilgileriniz (Aktivasyon İçin)</h4>
+                <input type="text" placeholder="İşletme Adı (Örn: Liva Güzellik)" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none gold-border">
+                <input type="text" placeholder="Adınız Soyadınız" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none gold-border">
+                <input type="tel" placeholder="Cep Telefonu (05XX XXX XX XX)" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none gold-border">
+            </div>
+
+            <button onclic
