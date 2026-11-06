@@ -296,43 +296,4 @@
 
             b1.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-gray-50 text-gray-700 border border-gray-200 hover:border-gold-500 transition-all whitespace-nowrap";
             b2.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-gray-50 text-gray-700 border border-gray-200 hover:border-gold-500 transition-all whitespace-nowrap";
-            b3.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-gray-50 text-gray-700 border border-gray-200 hover:border-gold-500 transition-all whitespace-nowrap";
-
-            if (panel === 'kurulum') {
-                p1.classList.remove('hidden');
-                b1.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-gray-900 text-gold-400 border border-gold-500/40 transition-all whitespace-nowrap";
-            } else if (panel === 'yonetim') {
-                p2.classList.remove('hidden');
-                b2.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-gray-900 text-gold-400 border border-gold-500/40 transition-all whitespace-nowrap";
-            } else if (panel === 'randevu') {
-                p3.classList.remove('hidden');
-                b3.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-gray-900 text-gold-400 border border-gold-500/40 transition-all whitespace-nowrap";
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function saveBusinessInfo(event) {
-            event.preventDefault();
-            const salonAdi = document.getElementById('inputSalonAdi').value;
-            const tel = document.getElementById('inputTel').value;
-            const adres = document.getElementById('inputAdres').value;
-
-            // Bilgileri yönetim ve randevu paneline anında yansıt
-            document.getElementById('yönetimSalonAdi').innerText = salonAdi;
-            document.getElementById('displaySalonAdi').innerText = salonAdi;
-            document.getElementById('displayAdresTel').innerHTML = `
-                <span><i class="fa-solid fa-location-dot text-gold-500 mr-1"></i> ${adres}</span>
-                <span><i class="fa-solid fa-phone text-gold-500 mr-1"></i> ${tel}</span>
-            `;
-
-            alert(`Tebrikler! "${salonAdi}" işletme kaydı başarıyla oluşturuldu.\n\nŞimdi 2. Panel (İşletme Yönetim Paneli) açılıyor.`);
-            switchPanel('yonetim');
-        }
-
-        function completeAppointment(event) {
-            event.preventDefault();
-            alert("Tebrikler! Randevunuz başarıyla oluşturuldu. Ödemeyi işlem sonrasında dükkanda yapabilirsiniz.");
-        }
-    </script>
-</body>
-</html>
+            b3.className = "px-
