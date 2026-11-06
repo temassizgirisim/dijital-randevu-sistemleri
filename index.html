@@ -1,334 +1,291 @@
 <!DOCTYPE html>
-<html lang="tr" class="dark">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temassız Randevu | Yönetim & Müşteri Paneli</title>
+    <title>Dijital Randevu Sistemleri | Temassız Girişim</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        gold: {
-                            300: '#fde047',
-                            400: '#facc15',
-                            500: '#eab308',
-                            600: '#ca8a04',
-                            700: '#a16207',
-                            DEFAULT: '#D4AF37', // Altın varank rengi
-                            light: '#F3E5AB',
-                            dark: '#AA7C11'
-                        },
-                        darkBg: '#0a0a0a',
-                        cardBg: '#141414',
-                        borderGold: '#332900'
-                    }
+                        gold: { 500: '#D4AF37', 600: '#C5A028', 700: '#AA820A', 800: '#8A6908' }
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF 0%, #D4AF37 50%, #AA7C11 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gold-border {
-            border-color: rgba(212, 175, 55, 0.3);
-        }
-        .gold-border:focus {
-            border-color: #D4AF37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-        }
-        /* Özel Scrollbar */
-        ::-webkit-scrollbar { width: 4px; height: 4px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #332900; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
-    </style>
 </head>
-<body class="bg-darkBg text-zinc-100 min-h-screen flex flex-col justify-between selection:bg-gold-600 selection:text-black">
+<body class="bg-white text-gray-900 font-sans antialiased selection:bg-gold-500 selection:text-white">
 
-    <!-- Üst Bar & Panel Değiştirici -->
-    <header class="border-b border-borderGold bg-darkBg/90 backdrop-blur-md sticky top-0 z-50 px-4 py-3">
-        <div class="max-w-xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 rounded-lg bg-gold-500/20 border border-gold/40 flex items-center justify-center text-gold-400 font-bold">
-                    <i class="fa-solid fa-bolt text-xs"></i>
+    <!-- ÜST NAVİGASYON (Ekran Değiştirici) -->
+    <header class="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('satis')">
+                <div class="w-10 h-10 rounded-xl bg-gray-900 flex items-center justify-center border border-gold-500 shadow-md">
+                    <i class="fa-solid fa-calendar-check text-gold-500 text-lg"></i>
                 </div>
                 <div>
-                    <span class="text-sm font-bold tracking-wider gold-gradient-text">TEMASSIZ RANDEVU</span>
-                    <span class="block text-[9px] text-gold-500 uppercase tracking-widest">Temassız Girişim</span>
+                    <span class="text-lg font-extrabold tracking-tight font-serif block text-gray-900">
+                        Dijital <span class="text-gold-600">Randevu Sistemleri</span>
+                    </span>
+                    <span class="text-[10px] uppercase tracking-widest text-gold-700 font-semibold block -mt-1">Temassız Girişim</span>
                 </div>
             </div>
-            <!-- Panel Geçiş Butonları -->
-            <div class="flex bg-zinc-900 border border-gold/30 rounded-xl p-1 text-xs font-semibold">
-                <button onclick="switchTab('customer')" id="btnCustomer" class="px-3 py-1.5 rounded-lg bg-gold-500 text-black transition-all">Müşteri Ekranı</button>
-                <button onclick="switchTab('admin')" id="btnAdmin" class="px-3 py-1.5 rounded-lg text-zinc-400 hover:text-gold-400 transition-all">İşletme Paneli</button>
+
+            <!-- Sayfa Geçiş Butonları -->
+            <div class="flex items-center space-x-2">
+                <button onclick="switchView('satis')" id="btnSatis" class="px-4 py-2 rounded-xl text-xs font-bold bg-gray-900 text-gold-400 border border-gold-500/40 transition-all shadow-sm">
+                    <i class="fa-solid fa-store mr-1.5"></i> Satış & Başvuru Sayfası
+                </button>
+                <button onclick="switchView('randevu')" id="btnRandevu" class="px-4 py-2 rounded-xl text-xs font-bold bg-gray-50 text-gray-700 border border-gray-200 hover:border-gold-500 transition-all">
+                    <i class="fa-solid fa-users mr-1.5"></i> Örnek Salon Randevu Ekranı
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- İçerik Alanı -->
-    <main class="w-full max-w-md mx-auto p-4 my-auto">
-
-        <!-- 1. MÜŞTERİ TAKVİM VE RANDEVU EKRANI -->
-        <div id="customerView" class="space-y-6">
-            <div class="text-center pt-2">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-gold-700 via-gold-500 to-gold-300 mx-auto flex items-center justify-center text-black font-extrabold text-xl shadow-xl shadow-gold-500/20 mb-3 border border-gold/40">
-                    LV
-                </div>
-                <h1 class="text-xl font-extrabold text-zinc-100">Liva Güzellik & Tırnak</h1>
-                <p class="text-xs text-gold-400 mt-0.5"><i class="fa-solid fa-location-dot mr-1"></i> Kadıköy, İstanbul</p>
+    <!-- 1. EKRAN: SATIŞ VE BAŞVURU SAYFASI (Shopier / iyzico Entegrasyonlu) -->
+    <main id="viewSatis" class="py-12 lg:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-flex items-center space-x-1.5 py-1.5 px-4 rounded-full bg-gold-500/10 text-gold-800 text-xs font-bold tracking-wider uppercase mb-4 border border-gold-500/30">
+                    <i class="fa-solid fa-bolt text-gold-600"></i>
+                    <span>Tek Seferlik Satış / Ömür Boyu veya Yıllık Lisans</span>
+                </span>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-serif tracking-tight text-gray-900 mb-4">
+                    İşletmeni Dijitalleştir, <span class="text-gold-600">Randevuları Otomatize Et</span>
+                </h1>
+                <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+                    Shopier veya iyzico üzerinden paketi satın al, seninle kurulumu tamamlayıp özel randevu linkini NFC karta ve sosyal medyaya entegre edelim!
+                </p>
             </div>
 
-            <div class="bg-cardBg border border-gold/30 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Form Alanı -->
+                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl shadow-gray-100">
+                    <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-gray-100">
+                        <div class="w-9 h-9 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-700 font-bold border border-gold-500/20">
+                            <i class="fa-solid fa-cash-register"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold font-serif text-gray-900">Sipariş & Kurulum Formu</h3>
+                            <p class="text-xs text-gray-500">Satın alım sonrası ekibimiz kurulum için hemen sizinle iletişime geçer.</p>
+                        </div>
+                    </div>
 
-                <h2 class="text-xs font-bold text-zinc-300 uppercase tracking-wider mb-4 border-b border-borderGold pb-2 flex items-center">
-                    <i class="fa-solid fa-calendar-days text-gold-500 mr-2"></i>Hizmet ve Takvim Seçimi
-                </h2>
+                    <form onsubmit="handleCheckout(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">İşletme / Salon Adı</label>
+                            <input type="text" id="formIsletme" required placeholder="Örn: Elite Kuaför & Güzellik" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none text-sm font-medium">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Ad Soyad</label>
+                                <input type="text" id="formAd" required placeholder="Adınız Soyadınız" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none text-sm font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Telefon Numarası</label>
+                                <input type="tel" id="formTel" required placeholder="05XX XXX XX XX" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none text-sm font-medium">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Satın Alınacak Paket</label>
+                            <select id="formPaket" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 outline-none text-sm bg-white font-bold text-gray-800">
+                                <option value="tekli">Tek Seferlik Tam Lisans Paketi (Ömür Boyu Kullanım)</option>
+                                <option value="yillik">12 Aylık Kurumsal Paket + NFC Kart Hediyeli</option>
+                            </select>
+                        </div>
 
-                <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-5">
-                    <!-- Hizmet Seçimi -->
+                        <div class="pt-4">
+                            <!-- BURAYA SHOPIER VEYA İYZİCO ÖDEME LİNKİNİ BAĞLAYACAKSIN -->
+                            <button type="submit" class="w-full py-4 px-6 rounded-xl bg-gray-900 text-gold-400 font-bold hover:bg-black transition-all shadow-lg flex items-center justify-center space-x-2 border border-gold-500/50">
+                                <i class="fa-solid fa-lock text-gold-500"></i>
+                                <span>Güvenli Ödeme Adımına Geç (Shopier / iyzico)</span>
+                            </button>
+                            <p class="text-[11px] text-center text-gray-500 mt-3">
+                                Ödeme sonrasında WhatsApp üzerinden birebir kurulum yapılır.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Sağ Bilgi Sütunu -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 sm:p-8 rounded-3xl border border-gold-500/40 shadow-2xl relative overflow-hidden">
+                        <h3 class="text-xl font-bold font-serif mb-4 text-gold-400 flex items-center justify-between">
+                            <span>Süreç Nasıl İşler?</span>
+                            <i class="fa-solid fa-route text-gold-500"></i>
+                        </h3>
+                        <ul class="space-y-3.5 text-xs text-gray-300">
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-circle-check text-gold-400 mt-0.5"></i>
+                                <span><strong>1. Ödeme:</strong> Shopier / iyzico üzerinden tek seferlik veya yıllık paketini seçip ödemeni tamamlarsın.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-circle-check text-gold-400 mt-0.5"></i>
+                                <span><strong>2. Kurulum:</strong> Seninle iletişime geçip salonunun çalışma saatlerini, personellerini ve hizmetlerini sisteme tanımlarız.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-circle-check text-gold-400 mt-0.5"></i>
+                                <span><strong>3. Teslimat:</strong> Sana özel randevu linkini oluştururuz. Bu linki NFC karta basar ya da Instagram biyografine koyarsın!</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Canlı Test Kartı -->
+                    <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm text-center">
+                        <p class="text-xs text-gray-600 mb-3">Müşterilerin göreceği randevu ekranını şimdi test etmek ister misin?</p>
+                        <button onclick="switchView('randevu')" class="px-5 py-2.5 bg-gold-500 text-gray-900 font-bold rounded-xl text-xs hover:bg-gold-600 transition-all shadow-md">
+                            <i class="fa-solid fa-eye mr-1"></i> Örnek Salon Randevu Ekranını Gör
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+    <!-- 2. EKRAN: MÜŞTERİNİN RANDEVU ALDIĞI SALON EKRANI (İşletme Linki) -->
+    <main id="viewRandevu" class="py-12 lg:py-16 hidden">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Salon Başlığı / Kart Üstü -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 sm:p-8 rounded-3xl border border-gold-500/40 shadow-2xl mb-8 text-center relative">
+                <div class="w-16 h-16 bg-gold-500/10 border border-gold-500/40 rounded-2xl mx-auto flex items-center justify-center text-gold-400 text-2xl mb-4">
+                    <i class="fa-solid fa-scissors"></i>
+                </div>
+                <h2 id="displaySalonAdi" class="text-2xl sm:text-3xl font-extrabold font-serif text-white mb-2">Elite Kuaför & Güzellik</h2>
+                <p class="text-xs text-gold-400 font-semibold tracking-wider uppercase">Temassız Dijital Randevu Sistemi</p>
+                <div class="mt-4 pt-4 border-t border-gray-700/60 flex justify-center space-x-4 text-xs text-gray-300">
+                    <span><i class="fa-solid fa-location-dot text-gold-500 mr-1"></i> Sancaktepe / İstanbul</span>
+                    <span><i class="fa-solid fa-phone text-gold-500 mr-1"></i> 0545 716 98 91</span>
+                </div>
+            </div>
+
+            <!-- Randevu Oluşturma Formu -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl">
+                <h3 class="text-lg font-bold font-serif text-gray-900 mb-6 pb-3 border-b border-gray-100 flex items-center justify-between">
+                    <span>Hemen Randevu Oluştur</span>
+                    <i class="fa-solid fa-calendar-days text-gold-600"></i>
+                </h3>
+
+                <form onsubmit="completeAppointment(event)" class="space-y-4">
                     <div>
-                        <label class="block text-xs font-semibold text-gold-400 mb-1.5 uppercase tracking-wider">Hizmet Seçin</label>
-                        <select id="serviceSelect" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
-                            <option value="Jel Tırnak Uygulaması (850 TL)">Jel Tırnak Uygulaması (60 dk) — 850 TL</option>
-                            <option value="Cilt Bakımı & Hydrafacial (1.200 TL)">Cilt Bakımı & Hydrafacial (45 dk) — 1.200 TL</option>
-                            <option value="İpek Kirpik (950 TL)">İpek Kirpik (75 dk) — 950 TL</option>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Hizmet Seçimi</label>
+                        <select required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 outline-none text-sm bg-white font-medium">
+                            <option value="">Hizmet Seçiniz...</option>
+                            <option value="sac">Saç Kesimi & Şekillendirme (350 TL)</option>
+                            <option value="sakal">Sakal Tıraşı & Bakım (200 TL)</option>
+                            <option value="kombine">Saç + Sakal + Cilt Bakımı (600 TL)</option>
+                            <option value="cilt">Profesyonel Cilt Bakımı (500 TL)</option>
                         </select>
                     </div>
 
-                    <!-- Takvim: Yatay Gün Şeridi -->
-                    <div>
-                        <label class="block text-xs font-semibold text-gold-400 mb-1.5 uppercase tracking-wider">Gün Seçin</label>
-                        <div class="grid grid-cols-4 gap-2" id="daysContainer">
-                            <!-- JS ile doldurulacak -->
-                        </div>
-                    </div>
-
-                    <!-- Saat Seçimi: Grid Butonlar -->
-                    <div>
-                        <label class="block text-xs font-semibold text-gold-400 mb-1.5 uppercase tracking-wider">Saat Seçin</label>
-                        <div class="grid grid-cols-3 gap-2" id="hoursContainer">
-                            <!-- JS ile doldurulacak -->
-                        </div>
-                    </div>
-
-                    <!-- Müşteri Bilgileri -->
-                    <div class="space-y-3 pt-2 border-t border-borderGold">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-gold-400 mb-1 uppercase tracking-wider">Adınız Soyadınız</label>
-                            <input type="text" id="clientName" required placeholder="Örn: Zilan Üstündağ" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Personel / Uzman</label>
+                            <select required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 outline-none text-sm bg-white font-medium">
+                                <option value="farketmez">Farketmez (İlk Müsait Uzman)</option>
+                                <option value="ahmet">Ahmet Usta</option>
+                                <option value="mehmet">Mehmet Usta</option>
+                            </select>
                         </div>
-
                         <div>
-                            <label class="block text-xs font-semibold text-gold-400 mb-1 uppercase tracking-wider">Telefon Numaranız</label>
-                            <input type="tel" id="clientPhone" required placeholder="05XX XXX XX XX" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Tarih</label>
+                            <input type="date" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 outline-none text-sm font-medium">
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-extrabold text-sm tracking-wide uppercase hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all mt-2">
-                        Randevuyu Onayla
-                    </button>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Müsait Saatler</label>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button type="button" class="py-2.5 rounded-xl border border-gold-500 bg-gold-500/10 text-gold-800 text-xs font-bold hover:bg-gold-500 hover:text-white transition-all">10:00</button>
+                            <button type="button" class="py-2.5 rounded-xl border border-gray-200 text-gray-700 text-xs font-bold hover:border-gold-500 transition-all">11:30</button>
+                            <button type="button" class="py-2.5 rounded-xl border border-gray-200 text-gray-700 text-xs font-bold hover:border-gold-500 transition-all">14:00</button>
+                            <button type="button" class="py-2.5 rounded-xl border border-gray-200 text-gray-700 text-xs font-bold hover:border-gold-500 transition-all">16:30</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Adınız Soyadınız</label>
+                            <input type="text" required placeholder="Adınız Soyadınız" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 outline-none text-sm font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">Telefon Numaranız</label>
+                            <input type="tel" required placeholder="05XX XXX XX XX" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 outline-none text-sm font-medium">
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full py-4 px-6 rounded-xl bg-gray-900 text-gold-400 font-bold hover:bg-black transition-all shadow-lg flex items-center justify-center space-x-2 border border-gold-500/50">
+                            <i class="fa-solid fa-check text-gold-500"></i>
+                            <span>Randevuyu Onayla ve Oluştur</span>
+                        </button>
+                    </div>
                 </form>
-            </div>
-        </div>
 
-        <!-- 2. İŞLETME YÖNETİM PANELİ -->
-        <div id="adminView" class="space-y-6 hidden">
-            <div class="flex justify-between items-center bg-cardBg border border-gold/30 p-4 rounded-2xl">
-                <div>
-                    <h2 class="text-sm font-bold text-zinc-100">İşletme Yönetim Paneli</h2>
-                    <p class="text-[11px] text-zinc-400">Gelen randevuları anlık takip edin</p>
-                </div>
-                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-gold-500/20 text-gold-400 border border-gold/40">Canlı Takvim</span>
-            </div>
-
-            <!-- Randevu Listesi -->
-            <div class="space-y-3">
-                <h3 class="text-xs font-semibold text-gold-400 uppercase tracking-wider">Gelen Randevular (<span id="appointmentCount">0</span>)</h3>
-                
-                <div id="appointmentsList" class="space-y-3 max-h-[350px] overflow-y-auto pr-1">
-                    <div id="noAppointments" class="text-center py-10 text-zinc-500 text-xs bg-cardBg border border-borderGold rounded-2xl">
-                        Henüz randevu bulunmuyor. Müşteri ekranından test randevusu oluşturabilirsiniz.
-                    </div>
+                <div class="mt-6 text-center">
+                    <button onclick="switchView('satis')" class="text-xs text-gray-500 hover:text-gold-600 underline font-medium">
+                        ← Satış ve Başvuru Sayfasına Geri Dön
+                    </button>
                 </div>
             </div>
         </div>
-
     </main>
 
-    <!-- Başarılı Randevu Bildirim Modalı -->
-    <div id="successModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-cardBg border border-gold/40 rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl">
-            <div class="w-16 h-16 rounded-full bg-gold-500/20 border border-gold/50 flex items-center justify-center text-gold-400 text-2xl mx-auto mb-4">
-                <i class="fa-solid fa-check"></i>
-            </div>
-            <h3 class="text-xl font-bold text-zinc-100 mb-2">Randevunuz Onaylandı!</h3>
-            <p class="text-xs text-zinc-400 mb-6 leading-relaxed">
-                Randevu detaylarınız işletmenin yönetim paneline başarıyla eklendi.
-            </p>
-            <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-gold-500 text-black font-bold hover:bg-gold-400 transition-all text-sm">
-                Tamam
-            </button>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="w-full py-4 text-center text-[11px] text-zinc-500 border-t border-borderGold">
-        <p>Altyapı <span class="text-gold-500 font-bold">Temassız Randevu</span> sistemine aittir. — Temassız Girişim</p>
+    <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800 text-xs mt-12 text-center">
+        <p class="text-white font-bold font-serif mb-1">Temassız Girişim - Dijital Randevu Sistemleri</p>
+        <p>© 2026 Tüm hakları saklıdır.</p>
     </footer>
 
+    <!-- JavaScript - Ekran Geçişleri -->
     <script>
-        let appointments = JSON.parse(localStorage.getItem('temassiz_appointments')) || [];
-        let selectedDay = '';
-        let selectedTime = '';
+        function switchView(view) {
+            const viewSatis = document.getElementById('viewSatis');
+            const viewRandevu = document.getElementById('viewRandevu');
+            const btnSatis = document.getElementById('btnSatis');
+            const btnRandevu = document.getElementById('btnRandevu');
 
-        // Dinamik Günleri ve Saatleri Oluştur
-        const daysList = [
-            { dayName: 'Bugün', dateStr: '06 Kas' },
-            { dayName: 'Yarın', dateStr: '07 Kas' },
-            { dayName: 'Cumartesi', dateStr: '08 Kas' },
-            { dayName: 'Pazar', dateStr: '09 Kas' }
-        ];
-
-        const hoursList = ['10:00', '11:30', '13:00', '14:30', '16:00', '17:30'];
-
-        function initCalendar() {
-            // Günleri bas
-            const daysContainer = document.getElementById('daysContainer');
-            daysContainer.innerHTML = '';
-            daysList.forEach((d, idx) => {
-                const isSelected = idx === 0;
-                if (isSelected) selectedDay = `${d.dayName} (${d.dateStr})`;
-
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = `p-2.5 rounded-xl border text-center transition-all ${isSelected ? 'bg-gold-500 border-gold text-black font-bold shadow-lg shadow-gold-500/20' : 'bg-darkBg border-gold/30 text-zinc-300 hover:border-gold'}`;
-                btn.innerHTML = `<div class="text-[11px] uppercase">${d.dayName}</div><div class="text-xs font-semibold mt-0.5">${d.dateStr}</div>`;
-                btn.onclick = () => selectDay(btn, `${d.dayName} (${d.dateStr})`);
-                daysContainer.appendChild(btn);
-            });
-
-            // Saatleri bas
-            const hoursContainer = document.getElementById('hoursContainer');
-            hoursContainer.innerHTML = '';
-            hoursList.forEach((h, idx) => {
-                const isSelected = idx === 0;
-                if (isSelected) selectedTime = h;
-
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = `py-2.5 rounded-xl border text-center text-xs font-bold transition-all ${isSelected ? 'bg-gold-500 border-gold text-black shadow-lg shadow-gold-500/20' : 'bg-darkBg border-gold/30 text-zinc-300 hover:border-gold'}`;
-                btn.innerText = h;
-                btn.onclick = () => selectTime(btn, h);
-                hoursContainer.appendChild(btn);
-            });
-        }
-
-        function selectDay(element, dayVal) {
-            selectedDay = dayVal;
-            document.querySelectorAll('#daysContainer button').forEach(b => {
-                b.className = "p-2.5 rounded-xl border text-center transition-all bg-darkBg border-gold/30 text-zinc-300 hover:border-gold";
-            });
-            element.className = "p-2.5 rounded-xl border text-center transition-all bg-gold-500 border-gold text-black font-bold shadow-lg shadow-gold-500/20";
-        }
-
-        function selectTime(element, timeVal) {
-            selectedTime = timeVal;
-            document.querySelectorAll('#hoursContainer button').forEach(b => {
-                b.className = "py-2.5 rounded-xl border text-center text-xs font-bold transition-all bg-darkBg border-gold/30 text-zinc-300 hover:border-gold";
-            });
-            element.className = "py-2.5 rounded-xl border text-center text-xs font-bold transition-all bg-gold-500 border-gold text-black shadow-lg shadow-gold-500/20";
-        }
-
-        function switchTab(tab) {
-            const customerView = document.getElementById('customerView');
-            const adminView = document.getElementById('adminView');
-            const btnCustomer = document.getElementById('btnCustomer');
-            const btnAdmin = document.getElementById('btnAdmin');
-
-            if (tab === 'customer') {
-                customerView.classList.remove('hidden');
-                adminView.classList.add('hidden');
-                btnCustomer.className = "px-3 py-1.5 rounded-lg bg-gold-500 text-black transition-all";
-                btnAdmin.className = "px-3 py-1.5 rounded-lg text-zinc-400 hover:text-gold-400 transition-all";
+            if (view === 'satis') {
+                viewSatis.classList.remove('hidden');
+                viewRandevu.classList.add('hidden');
+                btnSatis.className = "px-4 py-2 rounded-xl text-xs font-bold bg-gray-900 text-gold-400 border border-gold-500/40 transition-all shadow-sm";
+                btnRandevu.className = "px-4 py-2 rounded-xl text-xs font-bold bg-gray-50 text-gray-700 border border-gray-200 hover:border-gold-500 transition-all";
             } else {
-                customerView.classList.add('hidden');
-                adminView.classList.remove('hidden');
-                btnAdmin.className = "px-3 py-1.5 rounded-lg bg-gold-500 text-black transition-all";
-                btnCustomer.className = "px-3 py-1.5 rounded-lg text-zinc-400 hover:text-gold-400 transition-all";
-                renderAppointments();
+                viewSatis.classList.add('hidden');
+                viewRandevu.classList.remove('hidden');
+                btnRandevu.className = "px-4 py-2 rounded-xl text-xs font-bold bg-gray-900 text-gold-400 border border-gold-500/40 transition-all shadow-sm";
+                btnSatis.className = "px-4 py-2 rounded-xl text-xs font-bold bg-gray-50 text-gray-700 border border-gray-200 hover:border-gold-500 transition-all";
             }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function submitBooking(event) {
+        function handleCheckout(event) {
             event.preventDefault();
+            const salon = document.getElementById('formIsletme').value;
+            document.getElementById('displaySalonAdi').innerText = salon;
+            
+            // BURAYA SHOPIER VEYA İYZİCO ÖDEME LİNKİNİ BAĞLAYABİLİRSİN:
+            // window.location.href = "https://www.shopier.com/senin_magazan";
 
-            const newAppt = {
-                id: Date.now(),
-                service: document.getElementById('serviceSelect').value,
-                day: selectedDay,
-                time: selectedTime,
-                name: document.getElementById('clientName').value,
-                phone: document.getElementById('clientPhone').value,
-                dateAdded: new Date().toLocaleDateString('tr-TR')
-            };
-
-            appointments.unshift(newAppt);
-            localStorage.setItem('temassiz_appointments', JSON.stringify(appointments));
-
-            document.getElementById('successModal').classList.remove('hidden');
+            alert(`Sipariş alındı! İşletme Adı: "${salon}".\n\nÖdeme sonrası müşteriye özel randevu linki oluşturuluyor ve kuruluma geçiliyor.`);
+            switchView('randevu');
         }
 
-        function closeModal() {
-            document.getElementById('successModal').classList.add('hidden');
-            document.getElementById('bookingForm').reset();
-            initCalendar();
-            switchTab('admin'); 
+        function completeAppointment(event) {
+            event.preventDefault();
+            alert("Tebrikler! Randevunuz başarıyla oluşturuldu ve işletme paneline düştü.");
         }
-
-        function renderAppointments() {
-            const listContainer = document.getElementById('appointmentsList');
-            const countSpan = document.getElementById('appointmentCount');
-            const noApptDiv = document.getElementById('noAppointments');
-
-            countSpan.innerText = appointments.length;
-
-            if (appointments.length === 0) {
-                noApptDiv.classList.remove('hidden');
-                listContainer.innerHTML = '';
-                listContainer.appendChild(noApptDiv);
-                return;
-            }
-
-            let html = '';
-            appointments.forEach(app => {
-                html += `
-                    <div class="bg-cardBg border border-gold/30 rounded-2xl p-4 text-left space-y-2 shadow-md">
-                        <div class="flex justify-between items-start">
-                            <span class="text-xs font-bold text-gold-400">${app.service}</span>
-                            <span class="text-[10px] bg-zinc-900 border border-gold/30 text-zinc-300 px-2 py-0.5 rounded-md">${app.day} — ${app.time}</span>
-                        </div>
-                        <div class="text-xs text-zinc-200 font-medium">
-                            <i class="fa-solid fa-user text-gold-500 mr-1"></i> ${app.name} 
-                            <span class="text-zinc-400 ml-2"><i class="fa-solid fa-phone text-gold-500 mr-1"></i> ${app.phone}</span>
-                        </div>
-                    </div>
-                `;
-            });
-            listContainer.innerHTML = html;
-        }
-
-        // Sayfa açıldığında takvimi yükle
-        window.onload = initCalendar;
     </script>
 </body>
 </html>
